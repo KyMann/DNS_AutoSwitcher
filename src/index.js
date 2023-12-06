@@ -1,27 +1,24 @@
 import express from 'express';
 import path from 'path';
-
-const fetch = require('fetch-retry');
+const originalFetch = require('isomorphic-fetch');
+const fetch = require('fetch-retry')(originalFetch);
 
 import logger from './logger';
 
-const PORT = 7878;
-const DNSHOST = "https://www.duckdns.org/update?domains=piecraft";
-const DUCKTOKEN = "";
+import {DNSHOST, DUCKTOKEN, PORT } from 'constants'
+
 
 const DNSUpdate = async (newIP="") => {
-    const url = `${DNSHOST}&token=${DUCKTOKEN}&ip=${newIP}`; 
+    try { const url = `${DNSHOST}&token=${DUCKTOKEN}&ip=${newIP}`; 
+    console.log(url);
     //DUCK DNS will automatically detect your remote ip if you leave the field blank
-    const DNSUpdateResponse = await fetch(
-        url, {
-            method: 'GET',
-            retryOn: [502]
-        }
-    );
+    const DNSUpdateResponse = await fetch(url);
     if (DNSUpdateResponse.status === 200) {
         logger.debug('updated ip');
-    } else { 
-        throw new Error(`Recieved response status ${DNSUpdateResponse.status} trying to resolve ${url}`);
+        console.log('success')
+    }} catch (error) { 
+        console.log(error);
+        logger.debug(error);
     }
 };
 
@@ -36,9 +33,9 @@ app.get('/', (request, response) => {
 });
 
 app.get('/update', async (request, response) => {
+    logger.debug('/update route called');
     await DNSUpdate();
-    //TODO: add dynamic server status
-    logger.debug('update successful');
+    response.redirect('/');
 })
 
 app.listen(PORT, (err) => {

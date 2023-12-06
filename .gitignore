@@ -3,3 +3,7 @@ node_modules
 .vscode
 coverage
 dist
+package-lock.json
+yarn.lock
+ServerLog
+constants.json

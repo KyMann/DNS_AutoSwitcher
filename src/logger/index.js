@@ -4,7 +4,7 @@ const {
     colorize, combine, timestamp, printf
 } = format;
 
-const logFormat = printf((info) => `${info.timestamp} ${info.level}: ${info.mesage}`);
+const logFormat = printf((info) => `${info.timestamp} ${info.level}: ${info.message}`);
 
 const logger = createLogger({
     level: 'debug',
