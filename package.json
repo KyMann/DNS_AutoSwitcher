@@ -1,12 +1,11 @@
 {
-
     "name": "DNSAutoSwitcher",
     "version": "1.0.0",
     "description": "Express App to periodically update DNS mapping",
     "author": "github.com/KyMann",
     "main": "src/index.js",
     "scripts": {
-        "install": "npm install",
+        "install": "yarn install",
         "start": "node dist/index.js",
         "build": "./node_modules/.bin/babel src --out-dir dist --copy-files",
         "test": "rm -rf dist && jest --coverage --collectCoverageFrom=src/**/*.js && cp -r src dist && babel src -d dist"
@@ -17,7 +16,6 @@
         "url": "https://github.com/KyMann/ExpressRestAPI"
     },
     "license": "MIT",
-    
     "dependencies": {
         "@babel/cli": "^7.13.14",
         "@babel/core": "^7.13.14",
@@ -25,14 +23,15 @@
         "@babel/plugin-syntax-import-meta": "^7.10.4",
         "@babel/preset-env": "^7.13.12",
 
+        "isomorphic-fetch": "3.0.0",
         "express": "^4.17.1",
+        "fetch-retry": "5.0.6",
         "nock": "^13.0.11",
         "winston": "^3.3.3",
-        "fetch-retry": "5.0.6"
+        "node-cron": "^3.0.3"
     },
     "engines": {
         "node": "^18.14.0",
         "npm": "^6.0.0"
     }
-
 }

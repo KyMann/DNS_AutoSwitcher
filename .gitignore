@@ -7,3 +7,10 @@ package-lock.json
 yarn.lock
 ServerLog
 constants.json
+package.json
+ServerLog
+yarn.lock
+src/constants.js
+ServerLog
+yarn.lock
+
