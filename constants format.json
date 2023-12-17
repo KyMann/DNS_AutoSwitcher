@@ -1,0 +1,5 @@
+{ 
+"DNSHOST": "https://www.duckdns.org/update?domains=<YourDomain>",
+"DUCKTOKEN": "<Your Access Token>",
+"PORT": 7878
+ }

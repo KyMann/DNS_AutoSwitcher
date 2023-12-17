@@ -1,12 +1,15 @@
 import express from 'express';
 import path from 'path';
+const { readFileSync} = require('fs');
 const originalFetch = require('isomorphic-fetch');
 const fetch = require('fetch-retry')(originalFetch);
 
 import asyncScheduledTask from './cron';
 import logger from './logger';
 
-import CONSTANTS from './constants';
+const CONSTANTS = JSON.parse(readFileSync('./constants.json'));
+logger.debug('Constants loaded');
+
 const DNSHOST = CONSTANTS.DNSHOST;
 const DUCKTOKEN = CONSTANTS.DUCKTOKEN;
 const PORT = CONSTANTS.PORT

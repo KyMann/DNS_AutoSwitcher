@@ -22,13 +22,13 @@
         "@babel/plugin-syntax-dynamic-import": "^7.8.3",
         "@babel/plugin-syntax-import-meta": "^7.10.4",
         "@babel/preset-env": "^7.13.12",
-
-        "isomorphic-fetch": "3.0.0",
         "express": "^4.17.1",
         "fetch-retry": "5.0.6",
+        "fs": "^0.0.1-security",
+        "isomorphic-fetch": "3.0.0",
         "nock": "^13.0.11",
-        "winston": "^3.3.3",
-        "node-cron": "^3.0.3"
+        "node-cron": "^3.0.3",
+        "winston": "^3.3.3"
     },
     "engines": {
         "node": "^18.14.0",
